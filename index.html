@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Pomodoro Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div id="current-time">--:--:--</div>
+        <button id="collapse-btn">≡</button>
+        <h2>Sessions</h2>
+        <ul class="session-list" id="sessionList"></ul>
+        <div class="session-config">
+            <input type="text" id="sessionLabel" placeholder="Work Session Name">
+            
+            <div class="time-section">
+                <div class="time-section-title">Work Time</div>
+                <div class="time-input-group">
+                    <div class="hours-input">
+                        <div class="number-input">
+                            <button onclick="changeTime('workHours', -1)">-</button>
+                            <input type="number" id="workHours" min="0" value="0" placeholder="0">
+                            <button onclick="changeTime('workHours', 1)">+</button>
+                        </div>
+                    </div>
+                    <div class="minutes-input">
+                        <div class="number-input">
+                            <button onclick="changeTime('workMinutes', -1)">-</button>
+                            <input type="number" id="workMinutes" min="0" value="25" placeholder="25">
+                            <button onclick="changeTime('workMinutes', 1)">+</button>
+                        </div>
+                    </div>
+                    <div class="seconds-input">
+                        <div class="number-input">
+                            <button onclick="changeTime('workSeconds', -1)">-</button>
+                            <input type="number" id="workSeconds" min="0" value="0" placeholder="0">
+                            <button onclick="changeTime('workSeconds', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="time-section">
+                <div class="time-section-title">Break Time</div>
+                <div class="time-input-group">
+                    <div class="hours-input">
+                        <div class="number-input">
+                            <button onclick="changeTime('breakHours', -1)">-</button>
+                            <input type="number" id="breakHours" min="0" value="0" placeholder="0">
+                            <button onclick="changeTime('breakHours', 1)">+</button>
+                        </div>
+                    </div>
+                    <div class="minutes-input">
+                        <div class="number-input">
+                            <button onclick="changeTime('breakMinutes', -1)">-</button>
+                            <input type="number" id="breakMinutes" min="0" value="5" placeholder="5">
+                            <button onclick="changeTime('breakMinutes', 1)">+</button>
+                        </div>
+                    </div>
+                    <div class="seconds-input">
+                        <div class="number-input">
+                            <button onclick="changeTime('breakSeconds', -1)">-</button>
+                            <input type="number" id="breakSeconds" min="0" value="0" placeholder="0">
+                            <button onclick="changeTime('breakSeconds', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="addSessionPair()">Add Session Pair</button>
+        </div>
+        
+        <h2>Task List</h2>
+        <ul id="taskList" class="task-list"></ul>
+        <input type="text" id="taskInput" placeholder="New Task">
+        <button onclick="addTask()">Add Task</button>
+    </div>
+    <div class="main">
+        <h1>Pomodoro Timer</h1>
+        <div id="session-name">No active session</div>
+        <div id="timer">00:00:00</div>
+        <div class="buttons">
+            <button class="start" onclick="startTimer()">Start</button>
+            <button class="pause" onclick="pauseTimer()">Pause</button>
+            <button class="reset" onclick="resetTimer()">Reset</button>
+        </div>
+    </div>
+    
+    <div class="quote-container">
+        <div class="quote" id="quote">"Stay focused, stay productive!"</div>
+    </div>
+    
+    <div class="background-selector">
+        <div class="bg-option active" style="background-color: #1e1e2e" onclick="changeBackground('default')"></div>
+        <div class="bg-option" style="background-image: url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')" onclick="changeBackground('library')"></div>
+        <div class="bg-option" style="background-image: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')" onclick="changeBackground('coffee')"></div>
+        <div class="bg-option" style="background-image: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')" onclick="changeBackground('notebook')"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

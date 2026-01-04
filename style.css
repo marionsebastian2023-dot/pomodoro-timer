@@ -1,0 +1,299 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+body {
+    color: white;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    transition: background 0.5s ease;
+    background: #1e1e2e;
+}
+.sidebar {
+    width: 300px;
+    background: #282a36cc;
+    padding: 20px;
+    overflow-y: auto;
+    position: relative;
+    padding-top: 100px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+.sidebar.collapsed {
+    width: 50px;
+    overflow: hidden;
+}
+.sidebar.collapsed > *:not(#collapse-btn) {
+    display: none;
+}
+#collapse-btn {
+    position: absolute;
+    top: 30px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #44475a;
+    border-radius: 4px;
+}
+#current-time {
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    font-size: 36px;
+    font-weight: bold;
+    width: calc(100% - 60px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+h1 {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+#session-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #50fa7b;
+}
+#timer {
+    font-size: 80px;
+    font-weight: bold;
+    background: #44475acc;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    width: 400px;
+    backdrop-filter: blur(5px);
+}
+.buttons button {
+    font-size: 18px;
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    backdrop-filter: blur(5px);
+}
+.start { background: #50fa7b; color: black; }
+.pause { background: #ffb86c; color: black; }
+.reset { background: #ff5555; color: white; }
+.quote-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    max-width: 300px;
+    padding: 20px;
+    background: #282a36cc;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    text-align: center;
+}
+.quote {
+    font-style: italic;
+    font-size: 18px;
+    color: #f1fa8c;
+    line-height: 1.4;
+    position: relative;
+    padding: 0 25px;
+    margin: 0 10px;
+    text-align: center;
+}
+.quote::before {
+    content: '"';
+    font-size: 60px;
+    line-height: 0;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    color: #bd93f9;
+    opacity: 0.5;
+}
+.quote::after {
+    content: '"';
+    font-size: 60px;
+    line-height: 0;
+    position: absolute;
+    right: 0;
+    bottom: -15px;
+    color: #bd93f9;
+    opacity: 0.5;
+}
+.task-list li {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    padding: 8px;
+    background: #44475a;
+    border-radius: 4px;
+}
+.remove-task {
+    background: #ff5555;
+    color: white;
+    border: none;
+    padding: 3px 6px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+}
+.session-config {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.session-config input, .session-config button {
+    padding: 8px;
+    border-radius: 4px;
+    border: none;
+}
+.session-config button {
+    background: #50fa7b;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+.session-list {
+    list-style: none;
+    margin-top: 10px;
+}
+.session-list li {
+    padding: 8px;
+    background: #44475a;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+.session-list button {
+    background: #ff5555;
+    color: white;
+    border: none;
+    padding: 2px 6px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.break-session {
+    color: #f1fa8c;
+}
+.time-input-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.time-input-group > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.session-pair {
+    background: #44475a75;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+.session-pair-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.number-input {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+}
+.number-input input {
+    width: 70px;
+    padding: 8px 8px 8px 25px;
+    text-align: left;
+    background: #44475a;
+    color: white;
+    border: 1px solid #6272a4;
+    border-radius: 4px;
+}
+.number-input::before {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    color: #bd93f9;
+    font-size: 12px;
+}
+.hours-input::before {
+    content: "hrs";
+}
+.minutes-input::before {
+    content: "min";
+}
+.seconds-input::before {
+    content: "sec";
+}
+.number-input button {
+    background: #6272a4;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.time-section {
+    background: #44475a50;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+.time-section-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #f8f8f2;
+}
+.background-selector {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+.bg-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+    background-size: cover;
+    background-position: center;
+}
+.bg-option:hover {
+    transform: scale(1.1);
+}
+.bg-option.active {
+    border-color: #50fa7b;
+    box-shadow: 0 0 10px #50fa7b;
+}
